@@ -1,0 +1,115 @@
+﻿
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- App Favicon -->
+   
+
+    <title>Login</title>
+
+
+    <!-- CSS -->
+    <link href="~/Source/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/menu.css" rel="stylesheet" type="text/css" />
+    <script src="~/Source/js/modernizr.min.js"></script>
+
+    <!-- Notification css (Toastr) -->
+    <link href="~/Source/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="~/Source/Login/css/Login.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="account-pages"></div>
+    <div class="clearfix"></div>
+    <div class="wrapper-page">
+        <div class="text-center">
+            
+            <h5 class="text-white m-t-0 font-600">Iniciar sesion</h5>
+        </div>
+
+        <div class="m-t-40 cajita card-box">
+
+            <div class="text-center">
+                <h4 class="text-uppercase text-white font-bold m-b-0">Login</h4>
+            </div>
+            <div class="panel-body">
+
+                @using (Html.BeginForm("Validar", "Login", FormMethod.Post, new { @class = "form-horizontal m-t-20" }))
+                {
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control btn-rounded" name="Codigo" type="text" required="" placeholder="Codigo">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-12">
+                            <input class="form-control btn-rounded" name="Contraseña" type="password" required="" placeholder="Contraseña">
+                        </div>
+                    </div>
+
+                    <div class="form-group text-center m-t-30">
+                        <div class="col-xs-12">
+                            <button data-ajax="true" class="btn btn-custom btn-trans btn-rounded btn-block waves-effect waves-light" type="submit">Iniciar Sesion</button>
+                        </div>
+                    </div>
+
+                    <div class="form-group m-t-30 m-b-0">
+                        <div class="col-sm-12">
+                            <a href="#" class="text-white"><i class="fa fa-lock m-r-5"></i> ¿Olvido su contraseña?</a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- jQuery  -->
+    <script src="~/Source/js/jquery.min.js"></script>
+    <script src="~/Source/js/bootstrap.min.js"></script>
+    <script src="~/Source/js/detect.js"></script>
+    <script src="~/Source/js/fastclick.js"></script>
+    <script src="~/Source/js/jquery.slimscroll.js"></script>
+    <script src="~/Source/js/jquery.blockUI.js"></script>
+    <script src="~/Source/js/waves.js"></script>
+    <script src="~/Source/js/wow.min.js"></script>
+    <script src="~/Source/js/jquery.nicescroll.js"></script>
+    <script src="~/Source/js/jquery.scrollTo.min.js"></script>
+
+    <script src="~/Source/Login/css/bootstrap.min.js"></script>
+
+    <!--ResponseModel-->
+    <script src="~/Source/Login/js/ini.js"></script>
+    <script src="~/Source/Login/js/jquery.form.js"></script>
+    <script src="~/Source/Login/js/jquery.validate.min.js"></script>
+    <script src="~/Source/Login/js/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- App js -->
+    <script src="~/Source/js/jquery.core.js"></script>
+    <script src="~/Source/js/jquery.app.js"></script>
+
+    <!-- Toastr js -->
+    <script src="~/Source/plugins/toastr/toastr.min.js"></script>
+
+</body>
+
+
+</html>

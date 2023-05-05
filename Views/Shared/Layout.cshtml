@@ -1,0 +1,283 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Sistema Bumer</title>
+
+    <!-- App Favicon -->
+    <link rel="shortcut icon" href="~/Source/images/favicon.ico">
+
+    <!--calendar css-->
+    <link href="~/Source/plugins/fullcalendar/dist/fullcalendar.css" rel="stylesheet" />
+
+    <!--Morris Chart CSS -->
+    <link rel="stylesheet" href="~/Source/plugins/morris/morris.css">
+    
+
+    <!-- Plugins css para los datepicker-->
+    <link href="~/Source/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.css" rel="stylesheet" />
+    <link href="~/Source/plugins/multiselect/css/multi-select.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/plugins/select2/dist/css/select2.css" rel="stylesheet" type="text/css">
+    <link href="~/Source/plugins/select2/dist/css/select2-bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="~/Source/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css" rel="stylesheet" />
+    <link href="~/Source/plugins/switchery/switchery.min.css" rel="stylesheet" />
+    <link href="~/Source/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+    <link href="~/Source/plugins/mjolnic-bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet">
+    <link href="~/Source/DatePicker/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" rel="stylesheet">
+    <link href="~/Source/DatePicker/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+
+    <!-- App css -->
+    <link href="~/Source/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/core.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/components.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/icons.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/pages.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/menu.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/css/responsive.css" rel="stylesheet" type="text/css" />
+
+    <!--venobox lightbox-->
+    <link rel="stylesheet" href="~/Source/plugins/magnific-popup/dist/magnific-popup.css" />
+
+    <!-- DataTables -->
+    <link href="~/Source/plugins/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/plugins/datatables/buttons.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/plugins/datatables/fixedHeader.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/plugins/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="~/Source/plugins/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Notification css (Toastr) -->
+    <link href="~/Source/plugins/toastr/toastr.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- Sweet Alert css -->
+    <link href="~/Source/plugins/bootstrap-sweetalert/sweet-alert.css" rel="stylesheet" type="text/css" />
+
+
+
+    <script src="~/Source/js/modernizr.min.js"></script>
+
+</head>
+<body class="fixed-left">
+
+    <div id="wrapper">
+
+        <div class="topbar">
+
+            <div class="topbar-left">
+                <a href="~/Usuario/Index" class="logo"><span><span></span></span><i class="zmdi zmdi-layers"></i></a>
+            </div>
+
+            <div class="navbar navbar-default" role="navigation">
+                <div class="container">
+
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <button class="button-menu-mobile open-left">
+                                <i class="zmdi zmdi-menu"></i>
+                            </button>
+                        </li>
+                        <li>
+                            <h4 class="page-title">Sistema de Gestion de la Configuracion de Software</h4>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <!-- Notification -->
+                            <div class="notification-box">
+                                <ul class="list-inline m-b-0">
+                                    <li>
+                                        <a href="javascript:void(0);" class="right-bar-toggle">
+                                            <i class="zmdi zmdi-T`H`E`M`E`L`O`C`K`.`C`O`M`-none"></i>
+                                        </a>
+                                        <div class="noti-dot">
+                                            <span class="dot"></span>
+                                            <span class="pulse"></span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="hidden-xs">
+                            <form role="search" class="app-search">
+                                <input type="text" placeholder="Buscar..."
+                                       class="form-control">
+                                <a href=""><i class="fa fa-search"></i></a>
+                            </form>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="left side-menu">
+            <div class="sidebar-inner slimscrollleft">
+
+                <!-- User -->
+                <div class="user-box">
+                    <div class="user-img">
+                      
+                        <div class="user-status online"></div>
+                    </div>
+                    <ul class="list-inline">
+                        <li>
+                            <a href="#">
+                                <i class="zmdi zmdi-settings"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="~/Login/Logout" class="text-custom">
+                                <i class="">Cerrar Sesion</i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- End User -->
+                <!--- Sidebar -->
+                <div id="sidebar-menu">
+                    <ul>
+                        <li class="text-muted menu-title">Navegación</li>
+
+                        <li>
+                            <a href="~/Usuario/Index" class="waves-effect"><i class="zmdi zmdi-view-dashboard"></i> <span> Principal </span> </a>
+                        </li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-folder-person"></i> <span> Usuario </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="~/Usuario/Usuario">Todos</a></li>
+                                <li><a href="#">Equipos</a></li>
+                                <li><a href="#">Tareas</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="#" class="waves-effect"><i class="zmdi zmdi-calendar"></i><span> Entregable </span></a>
+                        </li>
+
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="zmdi zmdi-folder-person"></i> <span> Proyectos </span> <span class="menu-arrow"></span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="~/Proyecto/Index">Todos</a></li>
+                                <li><a href="#">Calendario</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="~/Metodologia/Index" class="waves-effect"><i class="zmdi zmdi-toys"></i><span> Metodología </span></a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="waves-effect"><i class="zmdi zmdi-play"></i><span> Etapa </span></a>
+                        </li>
+
+                        <li>
+                            <a href="#" class="waves-effect"><i class="zmdi zmdi-portable-wifi-changes"></i><span> Control de Cambio </span></a>
+                        </li>
+
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+
+            </div>
+
+        </div>
+
+        <div class="content-page">
+            <div class="content">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+
+            <footer class="footer">
+                
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        var resizefunc = [];
+    </script>
+
+    <script src="~/Source/js/jquery.min.js"></script>
+    <script src="~/Source/js/bootstrap.min.js"></script>
+    <script src="~/Source/js/detect.js"></script>
+    <script src="~/Source/js/fastclick.js"></script>
+    <script src="~/Source/js/jquery.slimscroll.js"></script>
+    <script src="~/Source/js/jquery.blockUI.js"></script>
+    <script src="~/Source/js/waves.js"></script>
+    <script src="~/Source/js/jquery.nicescroll.js"></script>
+    <script src="~/Source/js/jquery.scrollTo.min.js"></script>
+    <script src="~/Source/plugins/jquery-knob/jquery.knob.js"></script>
+
+    <!-- isotope filter plugin -->
+    <script type="text/javascript" src="~/Source/plugins/isotope/dist/isotope.pkgd.min.js"></script>
+
+    <!-- Popup -->
+    <script type="text/javascript" src="~/Source/plugins/magnific-popup/dist/jquery.magnific-popup.min.js"></script>
+
+    <!-- App js -->
+    <script src="~/Source/js/jquery.core.js"></script>
+    <script src="~/Source/js/jquery.app.js"></script>
+
+    <!-- Jquery-Ui -->
+    <script src="~/Source/plugins/jquery-ui/jquery-ui.min.js"></script>
+
+    <!-- Calendario -->
+    <script src="~/Source/plugins/moment/moment.js"></script>
+    <script src='~/Source/plugins/fullcalendar/dist/fullcalendar.min.js'></script>
+    <script src="~/Source/plugins/fullcalendar/dist/lang/es.js"></script>
+
+    <!-- Datatables-->
+    <script src="~/Source/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Source/plugins/datatables/dataTables.bootstrap.js"></script>
+    <script src="~/Source/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/Source/plugins/datatables/buttons.bootstrap.min.js"></script>
+    <script src="~/Source/plugins/datatables/jszip.min.js"></script>
+    <script src="~/Source/plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/Source/plugins/datatables/vfs_fonts.js"></script>
+    <script src="~/Source/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/Source/plugins/datatables/buttons.print.min.js"></script>
+    <script src="~/Source/plugins/datatables/dataTables.fixedHeader.min.js"></script>
+    <script src="~/Source/plugins/datatables/dataTables.keyTable.min.js"></script>
+    <script src="~/Source/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/Source/plugins/datatables/responsive.bootstrap.min.js"></script>
+    <script src="~/Source/plugins/datatables/dataTables.scroller.min.js"></script>
+
+    <!-- Toastr js -->
+    <script src="~/Source/plugins/toastr/toastr.min.js"></script>
+
+    <!-- Datatable init js -->
+    <script src="~/Source/pages/datatables.init.js"></script>
+
+    <!-- Count down js -->
+    <script src="~/Source/plugins/count-down/jquery.lwtCountdown-1.0.js"></script>
+
+    <!-- Sweet Alert js -->
+    <script src="~/Source/plugins/bootstrap-sweetalert/sweet-alert.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+            $('#datatable-keytable').DataTable({ keys: true });
+            $('#datatable-responsive').DataTable();
+            $('#datatable-scroller').DataTable({ ajax: "assets/plugins/datatables/json/scroller-demo.json", deferRender: true, scrollY: 380, scrollCollapse: true, scroller: true });
+            var table = $('#datatable-fixed-header').DataTable({ fixedHeader: true });
+        });
+        TableManageButtons.init();
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+﻿@model SistemaGestionDeConfiguracionSoftware.Models.METODOLOGIA
+
+@{ 
+   ViewBag.Title = "Edicion de la metodologia";
+   Layout = "~/Views/Shared/Layout.cshtml"; 
+    
+}
+
+<div class="row" style="padding: 25px;">
+
+    @using (Html.BeginForm("Guardar", "Metodologia", FormMethod.Post, new { id = "frm-metodologia" }))
+    {
+        string p = "";
+        @Html.HiddenFor(x => Model.ID_METODOLOGIA)
+        @Html.HiddenFor(x => Model.ESTADO) if (Model.ESTADO == true)
+        {
+            p = "Activo";
+        }
+        else
+        {
+            p = "Inactivo";
+        }
+
+
+        <div class="form">
+
+            <div class="row card-box">
+                <h4 class="header-title"><i class="fa fa-pencil"></i> Editar Metodologia @Model.DESCRIPCION</h4>
+            </div>
+
+            <div class="row card-box">
+                <h4 class="header-title m-t-0 m-b-30">Datos de generales</h4>
+
+                <!--Codigo y contraseña-->
+
+                <div class="col-md-8">
+                    <div class="form-group">
+                        @Html.Label("Descripcion", new { @class = "control-label" })
+                        @Html.TextBoxFor(x => Model.DESCRIPCION, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => Model.DESCRIPCION, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.Label("Estado", new { @class = "control-label" })
+                        <input type="text" class="form-control" value="@p" readonly>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-custom waves-effect waves-light">Guardar Cambios</button>
+        </div>}
+
+</div>

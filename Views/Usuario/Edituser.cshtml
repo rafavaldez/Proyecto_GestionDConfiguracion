@@ -1,0 +1,134 @@
+﻿@model SistemaGestionDeConfiguracionSoftware.Models.USUARIO
+@{
+    ViewBag.Title = "Edicion de usuario";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<div class="row" style="padding: 10px;">
+
+    @using (Html.BeginForm("Guardar", "Usuario", FormMethod.Post, new { id = "frm-usuario" }))
+    {
+        string p = "";
+        @Html.HiddenFor(x => Model.ID_USUARIO)
+        @Html.HiddenFor(x => Model.FECHA_CREACION)
+        @Html.HiddenFor(x => Model.ID_TIPOUSUARIO)
+        @Html.HiddenFor(x => Model.ESTADO)
+
+        if (Model.ESTADO == true)
+        {
+            p = "Activo";
+        }
+        else
+        {
+            p = "Inactivo";
+        }
+
+
+        <div class="form">
+
+            <div class="row card-box">
+                <h4 class="header-title"><i class="fa fa-pencil"></i> Editar usuario @Model.NOMBRE @Model.APELLIDO</h4>
+            </div>
+
+            <div class="row card-box">
+                <h4 class="header-title m-t-0 m-b-30">Datos de sesion</h4>
+
+                <!--Codigo y contraseña-->
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Codigo", new { @class = "control-label" })
+                        @Html.TextBoxFor(x => Model.CODIGO, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => Model.CODIGO, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Contraseña", new { @class = "control-label" })
+                        @Html.TextBoxFor(x => Model.PASSWORD, new { @class = "form-control", @type = "password" })
+                        @Html.ValidationMessageFor(x => Model.PASSWORD, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row card-box">
+                <h4 class="header-title m-t-0 m-b-30">Datos personales</h4>
+                <!--nombre, apellido, direccion, telefono-->
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.Label("Nombres", new { @class = "control-label" })
+                            @Html.TextBoxFor(x => Model.NOMBRE, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => Model.NOMBRE, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.Label("Apellidos", new { @class = "control-label" })
+                            @Html.TextBoxFor(x => Model.APELLIDO, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => Model.APELLIDO, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group">
+                            @Html.Label("Email", new { @class = "control-label" })
+                            @Html.TextBoxFor(x => Model.EMAIL, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => Model.EMAIL, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.Label("Telefono", new { @class = "control-label" })
+                            @Html.TextBoxFor(x => Model.TELEFONO, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(x => Model.TELEFONO, null, new { @class = "label label-danger" })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row card-box">
+                <h4 class="header-title m-t-0 m-b-30">Otros datos</h4>
+                <!--peso, estatura, edad-->
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.Label("Creacion", new { @class = "control-label" })
+                            <input type="text" class="form-control" value="@Model.FECHA_CREACION" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.Label("Estado", new { @class = "control-label" })
+                            <input type="text" class="form-control" value="@p" readonly>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            @Html.Label("Tipo de usuario", new { @class = "control-label" })
+                            <input type="text" class="form-control" value="@Model.TIPO_USUARIO.DESCRIPCION" readonly>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-custom waves-effect waves-light">Guardar Cambios</button>
+        </div>
+    }
+
+</div>

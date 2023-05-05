@@ -1,0 +1,192 @@
+﻿@model SistemaGestionDeConfiguracionSoftware.Models.PROYECTO
+@{
+    ViewBag.Title = "EditPro";
+    Layout = "~/Views/Shared/Layout.cshtml";
+    List<SistemaGestionDeConfiguracionSoftware.Models.METODOLOGIA> metodologia = ViewBag.Metodologia;
+    List<SistemaGestionDeConfiguracionSoftware.Models.USUARIO> usuario = ViewBag.Usuario;
+
+}
+
+<div class="row" style="padding: 10px;">
+
+    @using (Html.BeginForm("Guardar", "Proyecto", FormMethod.Post, new { id = "frm-proyecto" }))
+    {
+        string p = "";
+        @Html.HiddenFor(x => Model.ID_PROYECYO)
+        @Html.HiddenFor(x => Model.ESTADO)
+
+        if (Model.ESTADO == true)
+        {
+            p = "Activo";
+        }
+        else if (Model.ESTADO == false)
+        {
+            p = "Cancelado";
+        }
+        else
+        {
+            p = "En Revision";
+        }
+
+
+        <div class="form">
+
+            <div class="row card-box">
+                <h4 class="header-title"><i class="fa fa-pencil"></i> Editar @Model.NOMBRE</h4>
+            </div>
+
+            <div class="row card-box">
+                <h4 class="header-title m-t-0 m-b-30">Datos de generales</h4>
+
+                <div class="col-md-5">
+                    <div class="form-group">
+                        @Html.Label("Nombre", new { @class = "control-label" })
+                        @Html.TextBoxFor(x => Model.NOMBRE, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => Model.NOMBRE, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <div class="form-group">
+                        @Html.Label("Descripcion", new { @class = "control-label" })
+                        @Html.TextBoxFor(x => Model.DESCRIPCION, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(x => Model.DESCRIPCION, null, new { @class = "label label-danger" })
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Cliente", new { @class = "control-label" })
+                        <select name="ID_CLIENTE" id="ID_CLIENTE" class="form-control">
+                            @foreach (var user in usuario)
+                            {
+                                if (user.ID_TIPOUSUARIO == 7)
+                                {
+                                    if (user.ID_USUARIO == Model.ID_CLIENTE)
+                                    {
+                                        <option selected value="@user.ID_USUARIO">@user.NOMBRE</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@user.ID_USUARIO">@user.NOMBRE</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Encargado", new { @class = "control-label" })
+                        <select name="ID_JEFEPROYECTO" id="ID_JEFEPROYECTO" class="form-control">
+                            @foreach (var user in usuario)
+                            {
+                                if (user.ID_TIPOUSUARIO != 7)
+                                {
+                                    if (user.ID_USUARIO == Model.ID_JEFEPROYECTO)
+                                    {
+                                        <option selected value="@user.ID_USUARIO">@user.NOMBRE</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@user.ID_USUARIO">@user.NOMBRE</option>
+                                    }
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row card-box">
+                <h4 class="header-title m-t-0 m-b-30">Caracteristicas</h4>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.Label("Fecha de Inicio y Fin", new { @class = "control-label" })
+                        <input class="form-control input-daterange-timepicker" type="text" name="daterange" value="@Model.FECHA_INICIO - @Model.FECHA_FIN" />
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        @Html.Label("Metodologia", new { @class = "control-label" })
+                        <select name="ID_METODOLOGIA" id="ID_METODOLOGIA" class="form-control">
+
+                            @foreach (var metodo in metodologia)
+                            {
+                                if (Model.ID_METODOLOGIA != metodo.ID_METODOLOGIA)
+                                {
+                                    <option value="@metodo.ID_METODOLOGIA">Metodologia @metodo.DESCRIPCION</option>
+                                }
+                                else
+                                {
+                                    <option selected value="@metodo.ID_METODOLOGIA">Etapa @metodo.DESCRIPCION</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-2">
+                    <div class="form-group">
+                        @Html.Label("ESTADO")
+                        <input type="text" class="form-control" value="@p" readonly>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default waves-effect" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-custom waves-effect waves-light">Guardar Cambios</button>
+        </div>
+    }
+
+</div>
+
+
+<!-- jQuery  -->
+<script src="~/Source/js/jquery.min.js"></script>
+
+<!-- Plugins Js para los calendarios -->
+<script src="~/Source/plugins/switchery/switchery.min.js"></script>
+<script src="~/Source/plugins/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js"></script>
+<script type="text/javascript" src="~/Source/plugins/multiselect/js/jquery.multi-select.js"></script>
+<script type="text/javascript" src="~/Source/plugins/jquery-quicksearch/jquery.quicksearch.js"></script>
+<script src="~/Source/plugins/select2/dist/js/select2.min.js" type="text/javascript"></script>
+<script src="~/Source/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js" type="text/javascript"></script>
+<script src="~/Source/plugins/bootstrap-inputmask/bootstrap-inputmask.min.js" type="text/javascript"></script>
+<script src="~/Source/plugins/moment/moment.js"></script>
+<script src="~/Source/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+<script src="~/Source/plugins/mjolnic-bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+<script src="~/Source/DatePicker/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+<script src="~/Source/DatePicker/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="~/Source/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" type="text/javascript"></script>
+
+<script>
+
+    //Date range picker
+
+    jQuery('#date-range').datepicker({
+        toggleActive: true
+    });
+
+    $('.input-daterange-datepicker').daterangepicker({
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-default',
+        cancelClass: 'btn-primary'
+    });
+    $('.input-daterange-timepicker').daterangepicker({
+        timePicker: false,
+        format: 'DD/MM/YYYY hh:mm:ss',
+        timePickerIncrement: 30,
+        timePicker12Hour: true,
+        timePickerSeconds: false,
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-default',
+        cancelClass: 'btn-primary'
+    });
+</script>
